@@ -1,1 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+html, body {
+  height: 100%;
+  background-image: url('https://media.giphy.com/media/iOTWhGcJ1IcZOdJPDr/giphy.gif');
+  background-repeat: repeat;
+  background-size: 100px 100px;
+}
+
+html {
+    color:white;
+}
