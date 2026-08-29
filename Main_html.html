@@ -4,15 +4,32 @@
   <link rel="stylesheet" href="CSS_File_1.css">
 </head>
 <body>
-  <div class="ïntro-text">
+  <div class="top-bar">
+    <a href=#intro-text><button onclick="home()">Home</button> </a>
+    <a href="#us" onclick="Hwork()"><button>Homework</button></a>
+  </div>
+  <div class="ïntro-text" id="begone">
   <h1>Animation Page!</h1>
   <br>
   <h3 id="us">This is a page for Avonio and the renowned Quinoa Therapy!!! </h3>
     <p>Eggman is sup</p>
+    </div>
+    <div class="Hwork" id="Hbehere" style="display: none;">
     <h1>IB Homework list:</h1>
     <ob>
       <li>-Art politcal projuect</li>
     </ob>
-</div>
+    </div>
 </body>
+<script>
+  function Hwork() {
+    document.getElementById('begone').style.display='none'
+    document.getElementById('Hbehere').style.display='block'
+  }
+
+  function home() {
+    document.getElementById('begone').style.display='block'
+    document.getElementById('Hbehere').style.display='none'
+  }
+</script>
 </html>
