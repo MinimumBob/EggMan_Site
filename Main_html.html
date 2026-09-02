@@ -1,39 +1,77 @@
 <!DOCTYPE html>
-<html> 
-<head> 
+<html>
+<head>
   <link rel="stylesheet" href="CSS_File_1.css">
 </head>
 <body>
   <div class="top-bar">
-    <button onclick="home()">Home</button>
-    <button onclick="Hwork()">Homework</button>
+    <button id="Bhome" onclick="home()">Home</button>
+    <button id="Bwork" onclick="Hwork()">Homework</button>
   </div>
   <div class="intro-text" id="begone">
-  <h1>Animation Page!</h1>
-  <br>
-  <h3 id="us">This is a page for Avonio and the renowned Quinoa Therapy!!! </h3>
+    <h1>Animation Page!</h1>
+    <br>
+    <h3 id="us">This is a page for Avonio and the renowned Quinoa Therapy!!! </h3>
+    <br>
     <p>Eggman is sup</p>
     <!--- Should we add more eggman lore or more text on the main page? --->
-    </div>
-    <div class="Hwork" id="Hbehere" style="display: none;">
+  </div>
+  <div class="Hwork" id="Hbehere" style="display: none;">
     <h1>IB Homework list:</h1>
-    <ob>
-        <li>
-            <input type="checkbox" id="item1">
-            <label for="item1">Art political project</label>
-        </li>
-    </ob>
-    </div>
-</body>
-<script>
-  function Hwork() {
-    document.getElementById('begone').style.display='none'
-    document.getElementById('Hbehere').style.display='block'
-  }
+    <ul>
+      <li>
+        <input type="checkbox" id="item1">
+        <label for="item1">Art political project</label>
+      </li>
+    </ul>
+  </div>
 
-  function home() {
-    document.getElementById('begone').style.display='block'
-    document.getElementById('Hbehere').style.display='none'
-  }
-</script>
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+    import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAh3R95ym1o30kBY2kMfZqj2nPfDk2pdsE",
+      authDomain: "eggman-54ee3.firebaseapp.com",
+      databaseURL: "https://eggman-54ee3-default-rtdb.firebaseio.com",
+      projectId: "eggman-54ee3",
+      storageBucket: "eggman-54ee3.firebasestorage.app",
+      messagingSenderId: "164018396802",
+      appId: "1:164018396802:web:36a408dbab56b7963b5e9b"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    // Wire up every checkbox inside .Hwork automatically
+    document.querySelectorAll('.Hwork input[type="checkbox"]').forEach((checkbox) => {
+      const itemRef = ref(db, 'checklist/' + checkbox.id);
+
+      // Listen for changes from ANY client and reflect them live
+      onValue(itemRef, (snapshot) => {
+        const isChecked = snapshot.val() === true;
+        checkbox.checked = isChecked;
+        checkbox.closest('li').classList.toggle('checked', isChecked);
+      });
+
+      // When this client checks/unchecks, write it for everyone
+      checkbox.addEventListener('change', () => {
+        set(itemRef, checkbox.checked);
+      });
+    });
+  </script>
+
+  <script>
+    function Hwork() {
+      document.getElementById('begone').style.display = 'none';
+      document.getElementById('Hbehere').style.display = 'block';
+    }
+
+    function home() {
+      document.getElementById('begone').style.display = 'block';
+      document.getElementById('Hbehere').style.display = 'none';
+    }
+  </script>
+</body>
 </html>

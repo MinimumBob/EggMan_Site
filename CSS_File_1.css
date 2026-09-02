@@ -15,10 +15,43 @@ html {
     color:white;
 }
 
+.top-bar {
+  background-color: black;
+}
+
+.Hwork {
+  background-color: black;
+  h1 {
+    color: red;
+  }
+  li {
+    color: rgb(255, 173, 233);
+    font-size: 1.5vh;
+  }
+}
+
+.Hwork li.checked label {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
 #us {
   color:blue;
 }
 
 .intro-text {
-  background-color: blue;
+  background-color: black;
+}
+
+
+#Bwork {
+  padding: 1vh 1.5vw;
+  font-size: 1rem;
+  border-radius: 25%;
+}
+
+#Bhome {
+  padding: 1vh 1.5vw;
+  font-size: 1rem;
+  border-radius: 25%;
 }
