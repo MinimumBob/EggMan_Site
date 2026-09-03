@@ -30,6 +30,7 @@ html {
   }
 }
 
+/*This is to cross out the items on the IB homework list when Firebase marks them as true/checked. */
 .Hwork li.checked label {
   text-decoration: line-through;
   opacity: 0.6;
@@ -50,8 +51,22 @@ html {
   border-radius: 25%;
 }
 
+#Bwork:hover {
+  transform: translateY(-5px);
+  box-shadow: 5px 5px 10px pink;
+  cursor: pointer;
+  transition: transform 0.5s ease-in-out;
+}
+
 #Bhome {
   padding: 1vh 1.5vw;
   font-size: 1rem;
   border-radius: 25%;
+}
+
+#Bhome:hover {
+  transform: translateY(-5px);
+  box-shadow: 5px 5px 10px yellow;
+  cursor: pointer;
+  transition: transform 0.5s ease-in-out;
 }
